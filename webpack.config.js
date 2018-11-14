@@ -8,18 +8,19 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '*']
+    extensions: ['.js', '.jsx', '*']
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['env', 'react']
-      }
-    }
-  ]
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        query: {
+          presets: ['env', 'react']
+        }
+      },
+    }]
   },
   devtool: 'source-map'
 };
